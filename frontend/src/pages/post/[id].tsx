@@ -3,6 +3,17 @@ import { Avatar, Box, Center, Container, Divider,Image, Flex, Heading, Icon, Pin
 
 import React from 'react'
 
+const post={
+    title:'The Astonishing Origins of 6 Common Compound Words',
+    content:'The 1989 Mill Valley Film Festival, in association with the Hanson Gallery in neighboring Sausalito, installed an exhibition of my portraits, including movie directors, actors, and writers. I was billed as a “Featured Artist”',
+    readTime:5, 
+    createdAt:new Date(),
+    author:{
+    name:'Mark Andre',
+    avatar:'',
+    }
+ }
+
 const Post = () => {
 
     const CircleIcon = (props: any) => (
@@ -16,19 +27,18 @@ const Post = () => {
   return (
 
     <>
-    
+
+    <Box maxW={'1350px'} marginX={'auto'}>
     <HeaderNav bg='transparent'/>
 
-    <section id='Title' className='post-title-section'>
+<section id='Title' className='post-title-section'>
 
-    <Box  display={'flex'} flexDirection={'column'} gap={16} mb={2} pt={8} pb={40} maxW={'1050px'} h={345} alignItems={'flex-start'} mt={'45px'} ml={'170px'}>
+<Box  display={'flex'} flexDirection={'column'} gap={16} mb={2} pt={8} pb={40} maxW={'1050px'} h={345} alignItems={'flex-start'} mt={'45px'} ml={'170px'}>
 
-<Heading fontSize={'40px'} fontWeight={700} lineHeight={'normal'} >The Astonishing Origins of 6 Common Compound Words</Heading>
+<Heading fontSize={'40px'} fontWeight={700} lineHeight={'normal'} >{post.title}</Heading>
 
 <Box mt={-5} mb={-9}  h={82}  fontWeight={400} fontSize={18} lineHeight={'140%'} maxW={'900px'} fontStyle={'normal'} color='#636566'>
-The 1989 Mill Valley Film Festival, in association with the Hanson Gallery in 
-neighboring Sausalito, installed an exhibition of my portraits, including movie directors, 
-actors, and writers. I was billed as a “Featured Artist”
+{post.content}
 
 <Divider mt={5} mb={2} orientation='horizontal' />
 </Box>
@@ -46,7 +56,7 @@ actors, and writers. I was billed as a “Featured Artist”
 <Divider orientation='horizontal' />
 
 </Box>
-    </section>
+</section>
 
 
 
@@ -82,11 +92,15 @@ production facility, was a short drive from the gallery.
 <Avatar flexShrink={0} size='md' name='Christian Nwamba' src='https://bit.ly/code-beast' />{' '}
 
 <Text color={'black'} fontSize={24} fontWeight={600}>Written By Mark Andre</Text>
-    <Text color={'636566'} fontWeight={400} fontSize={16}> This is my Bio</Text>
+<Text color={'636566'} fontWeight={400} fontSize={16}> This is my Bio</Text>
 </Box>
 
 </Box>
 
+
+    </Box>
+    
+  
 
      
 

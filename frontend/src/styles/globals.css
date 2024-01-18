@@ -42,11 +42,9 @@ body {
 }
 
 .post-content {
-  width: 100vw;
   margin-top: 2.4rem;
-  margin-left: 18rem;
+  margin-left: 8rem;
   display: flex;
-  max-width: 95rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
