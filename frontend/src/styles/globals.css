@@ -25,3 +25,32 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.post-title-section {
+  width: 100vw;
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  max-height: 50rem;
+
+}
+
+.post-image {
+
+  margin-top: 4.5rem;
+
+}
+
+.post-content {
+  width: 100vw;
+  margin-top: 2.4rem;
+  margin-left: 18rem;
+  display: flex;
+  max-width: 95rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-wrap: balance;
+
+
+}
