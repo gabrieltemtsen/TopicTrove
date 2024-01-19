@@ -6,22 +6,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:push":"drizzle-kit push:mysql",
+    "db:gen":"drizzle-kit generate:mysql",
+    "db:pull":"drizzle-kit pull:mysql"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.2.0",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "dotenv": "^16.3.1",
     "drizzle-orm": "^0.29.3",
     "framer-motion": "^10.18.0",
-    "connectkit": "^1.6.0",
     "mysql2": "^3.7.0",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18",
-    "viem": "1.x",
-    "wagmi": "1.x"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",

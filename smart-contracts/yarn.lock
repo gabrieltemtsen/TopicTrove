@@ -1062,10 +1062,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/contracts@npm:^4.8.1":
-  version: 4.8.3
-  resolution: "@openzeppelin/contracts@npm:4.8.3"
-  checksum: aea130d38d46840c5cbe3adbaa9a7ac645e4bd66ad3f3baf2fa78588c408d1a686170b3408c9e2e5e05530fba22ecdc00d7efb6b27852a8b29f91accbc0af255
+"@openzeppelin/contracts@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@openzeppelin/contracts@npm:5.0.1"
+  checksum: bc056d358a672f0d43ff5a372b5b65c6d3e9e49478f70bc00a5ad06ce9107400e8e8b8d94cf85dffca00b303ee8d15ac8def55d320ea54386dc81d6b98ddfabc
   languageName: node
   linkType: hard
 
@@ -6140,41 +6140,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rejuvenate-ai@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "rejuvenate-ai@workspace:."
-  dependencies:
-    "@chainlink/contracts": ^0.7.1
-    "@ethersproject/abi": ^5.4.7
-    "@ethersproject/providers": ^5.4.7
-    "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
-    "@nomicfoundation/hardhat-network-helpers": ^1.0.0
-    "@nomicfoundation/hardhat-toolbox": ^2.0.0
-    "@nomicfoundation/hardhat-verify": ^2.0.2
-    "@nomiclabs/hardhat-ethers": ^2.0.0
-    "@nomiclabs/hardhat-etherscan": ^3.0.0
-    "@openzeppelin/contracts": ^4.8.1
-    "@openzeppelin/hardhat-upgrades": ^2.3.0
-    "@typechain/ethers-v5": ^10.1.0
-    "@typechain/hardhat": ^6.1.2
-    "@types/chai": ^4.2.0
-    "@types/mocha": ">=9.1.0"
-    "@types/node": ">=12.0.0"
-    chai: ^4.2.0
-    dotenv: ^16.0.3
-    ethers: ^5.4.7
-    hardhat: ^2.12.7
-    hardhat-gas-reporter: ^1.0.8
-    mocha: ^10.2.0
-    openai: ^4.8.0
-    openzeppelin-solidity: ^3.4.2
-    solidity-coverage: ^0.8.0
-    ts-node: ">=8.0.0"
-    typechain: ^8.1.0
-    typescript: ">=4.5.0"
-  languageName: unknown
-  linkType: soft
-
 "req-cwd@npm:^2.0.0":
   version: 2.0.0
   resolution: "req-cwd@npm:2.0.0"
@@ -7182,6 +7147,41 @@ __metadata:
   checksum: 952c29e2a85d7123239b5cfdd889a0dde47ab0497f0913d70588f19c53f7e0b5327c95f4651e413c74b785147f9637b17410ac8c846d5d4a20a5a33eb6dc3a45
   languageName: node
   linkType: hard
+
+"topic-trove@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "topic-trove@workspace:."
+  dependencies:
+    "@chainlink/contracts": ^0.7.1
+    "@ethersproject/abi": ^5.4.7
+    "@ethersproject/providers": ^5.4.7
+    "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
+    "@nomicfoundation/hardhat-network-helpers": ^1.0.0
+    "@nomicfoundation/hardhat-toolbox": ^2.0.0
+    "@nomicfoundation/hardhat-verify": ^2.0.2
+    "@nomiclabs/hardhat-ethers": ^2.0.0
+    "@nomiclabs/hardhat-etherscan": ^3.0.0
+    "@openzeppelin/contracts": ^5.0.1
+    "@openzeppelin/hardhat-upgrades": ^2.3.0
+    "@typechain/ethers-v5": ^10.1.0
+    "@typechain/hardhat": ^6.1.2
+    "@types/chai": ^4.2.0
+    "@types/mocha": ">=9.1.0"
+    "@types/node": ">=12.0.0"
+    chai: ^4.2.0
+    dotenv: ^16.0.3
+    ethers: ^5.4.7
+    hardhat: ^2.12.7
+    hardhat-gas-reporter: ^1.0.8
+    mocha: ^10.2.0
+    openai: ^4.8.0
+    openzeppelin-solidity: ^3.4.2
+    solidity-coverage: ^0.8.0
+    ts-node: ">=8.0.0"
+    typechain: ^8.1.0
+    typescript: ">=4.5.0"
+  languageName: unknown
+  linkType: soft
 
 "tough-cookie@npm:^2.3.3, tough-cookie@npm:~2.5.0":
   version: 2.5.0
