@@ -31,7 +31,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 <MainChakraProvider>
                     <Component {...pageProps} />
                 </MainChakraProvider>
-                <ConnectKitButton />
             </ConnectKitProvider>
         </WagmiConfig>
     );
