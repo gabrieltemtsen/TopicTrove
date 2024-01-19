@@ -19,6 +19,11 @@ const creators = [
     bio: 'I am a good and novel Writer',
     genre: ['AI', 'Music'],
   },
+  {
+    name: 'Chika Ojo',
+    bio: 'I am a good and novel Writer',
+    genre: ['AI', 'Music'],
+  },
 ]
 
 const Creators = () => {
@@ -36,6 +41,8 @@ const Creators = () => {
 
    </Box>
 
+                              {/* ***SEARCH SECTION**** */}
+
    <Box mt={30} display={'flex'} p={'0px 116px'} w={'1300px'} maxW={'1300px'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
     
     <Box display={'flex'} p={'16px 24px'} justifyContent={'center'} alignItems={'center'} alignContent={'center'} gap={20} flexWrap={'wrap'}>
@@ -45,6 +52,8 @@ const Creators = () => {
       <Input display={'flex'} placeholder='Search Creator' w={'739px'} h={'48px'} p={'17px 24px'} alignItems={'center'} gap={'16px'} borderRadius={'999px'} border={'1px solid #A2A4A5'} />
     </Box>
    </Box>
+
+                              {/* ***TOP_CREATORS SECTION**** */}
 <Box display={'flex'} w={'1300px'} p={'10px 1123px 10px 13px'} alignItems={'center'} borderBottom={'1px solid rgba(0, 0, 0, 0.05)'}>
   <Text fontWeight={600} fontSize={24}>Top Creators</Text>
 </Box>
@@ -106,6 +115,67 @@ const Creators = () => {
     
 </Box>
 
+                           {/* ***MORE_CREATORS SECTION**** */}
+ <Box display={'flex'}  p={'10px 1123px 10px 13px'} alignItems={'center'} borderBottom={'1px solid rgba(0, 0, 0, 0.05)'}>
+  <Text fontWeight={600} w={'17rem'} fontSize={24}>More Creators</Text>
+</Box>
+
+<Box display={'flex'} maxW={'1300px'} p={'20px 11px'} justifyContent={'center'} alignItems={'flex-start'} alignContent={'flex-start'} gap={'15px'} alignSelf={'stretch'} flexWrap={'wrap'}>
+  {creators.map((creator) => (
+
+    <>
+    <Box display={'flex'} width={'629px'} p={'14px 16px'} alignItems={'flex-start'} alignContent={'flex-start'} gap={'16px'} flexWrap={'wrap'} borderRadius={10} border={'1px solid rgba(0, 0, 0, 0.15)'}>
+      <WrapItem>
+      <Avatar name='Kent Dodds' src='https://bit.ly/kent-c-dodds' borderRadius={12} w={100} h={120} flexShrink={0} />
+
+      <Box w={323} h={158} flexShrink={0}>
+        <Box>
+                  <Box fontSize={20} fontWeight={600} m={2} lineHeight={'normal'}> {creator.name} 
+                  <Box display={'inline-flex'} ml={5} mb={-1} mt={-9} p={'3px 10px'} justifyContent={'center'} alignItems={'center'} gap={'10px'} borderRadius={999} background={'var(--sec-color-green, #06F2AB)'} >
+                  <Text fontSize={12} fontWeight={500} lineHeight={'normal'}>PPP: $25</Text>
+                </Box>
+                </Box>
+          
+        </Box>
+        <Text fontSize={15} fontWeight={400} m={2} lineHeight={'normal'} color={'#636566'}> {creator.bio}</Text>
+        <Box display={'flex'} w={300} flexDirection={'column'} justifyContent={'center'} alignItems={'flex-start'}>
+        <Text fontWeight={500} m={2} fontSize={16} lineHeight={'normal'}>Writes about: </Text>
+        <Box display={'flex'} w={300} p={'10px 0px'} alignItems={'flex-start'} alignContent={'flex-start'} gap={'0px 10px'} flexWrap={'wrap'}>
+          
+        {creator.genre.map((item) => (
+          <>
+          <Box display={'flex'} p={'4px 14px'} justifyContent={'center'} alignItems={'center'} gap={'10px'} borderRadius={999} background={'rgba(0, 0, 0, 0.05)'}>
+      <Text fontSize={14} fontWeight={500} lineHeight={'normal'}>{item}</Text>
+      </Box>
+          </>
+        ))}
+      
+        </Box>
+        </Box>
+
+        
+
+
+      </Box>
+      <Box display={'flex'} p={2} flexDirection={'column'} alignItems={'flex-start'} gap={16}>
+        <Box display={'flex'} w={138} minW={120} p={'6px 16px'} justifyContent={'center'} alignItems={'center'} gap={10} borderRadius={999} background={'black'}>
+        <Text color={'white'} fontSize={14} fontWeight={500} lineHeight={'normal'}>Request a post</Text>
+      </Box>
+      <Box display={'flex'} w={138} minW={120} p={'6px 16px'} justifyContent={'center'} alignItems={'center'} gap={10} borderRadius={999} border={'1px solid black'}>
+        <Text color={'black'} fontSize={14} fontWeight={500} lineHeight={'normal'}>View Profile</Text>
+      </Box>
+
+      </Box>
+      
+    </WrapItem>
+    </Box>
+    </>
+
+  ))}
+    
+
+    
+</Box>
 
 
 
