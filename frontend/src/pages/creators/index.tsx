@@ -16,27 +16,33 @@ import {
     Wrap,
     WrapItem,
     Input,
+    Stack,
+    VStack,
 } from "@chakra-ui/react";
 
 import React from "react";
 
 const creators = [
     {
+        avatar: "https://bit.ly/kent-c-dodds",
         name: "Mark Andre",
         bio: "I am a good and novel Writer",
         genre: ["AI", "Music"],
     },
     {
+        avatar: "https://bit.ly/kent-c-dodds",
         name: "Alex John",
         bio: "I am a good and novel Writer",
         genre: ["AI", "Music"],
     },
     {
+        avatar: "https://bit.ly/kent-c-dodds",
         name: "Pluto Boy",
         bio: "I am a good and novel Writer",
         genre: ["AI", "Music"],
     },
     {
+        avatar: "https://bit.ly/kent-c-dodds",
         name: "Chika Ojo",
         bio: "I am a good and novel Writer",
         genre: ["AI", "Music"],
@@ -44,6 +50,7 @@ const creators = [
 ];
 
 const Creators = () => {
+    let counter = 0;
     return (
         <div>
             <Box maxW={"1350px"} marginX={"auto"}>
@@ -145,6 +152,7 @@ const Creators = () => {
                     {creators.map((creator) => (
                         <>
                             <Box
+                                key={counter++}
                                 display={"flex"}
                                 width={"629px"}
                                 p={"14px 16px"}
@@ -157,8 +165,8 @@ const Creators = () => {
                             >
                                 <WrapItem>
                                     <Avatar
-                                        name="Kent Dodds"
-                                        src="https://bit.ly/kent-c-dodds"
+                                        name="TopicTrove Creator"
+                                        src={creator.avatar}
                                         borderRadius={12}
                                         w={100}
                                         h={120}
@@ -236,6 +244,7 @@ const Creators = () => {
                                                 {creator.genre.map((item) => (
                                                     <>
                                                         <Box
+                                                            key={counter++}
                                                             display={"flex"}
                                                             p={"4px 14px"}
                                                             justifyContent={
@@ -265,54 +274,56 @@ const Creators = () => {
                                             </Box>
                                         </Box>
                                     </Box>
-                                    <Box
-                                        display={"flex"}
-                                        p={2}
-                                        flexDirection={"column"}
-                                        alignItems={"flex-start"}
-                                        gap={16}
-                                    >
+                                    <VStack spacing={2}>
                                         <Box
                                             display={"flex"}
-                                            w={138}
-                                            minW={120}
-                                            p={"6px 16px"}
-                                            justifyContent={"center"}
-                                            alignItems={"center"}
-                                            gap={10}
-                                            borderRadius={999}
-                                            background={"black"}
+                                            p={2}
+                                            flexDirection={"column"}
+                                            alignItems={"flex-start"}
+                                            gap={16}
                                         >
-                                            <Text
-                                                color={"white"}
-                                                fontSize={14}
-                                                fontWeight={500}
-                                                lineHeight={"normal"}
+                                            <Box
+                                                display={"flex"}
+                                                w={138}
+                                                minW={120}
+                                                p={"6px 16px"}
+                                                justifyContent={"center"}
+                                                alignItems={"center"}
+                                                gap={10}
+                                                borderRadius={999}
+                                                background={"black"}
                                             >
-                                                Request a post
-                                            </Text>
-                                        </Box>
-                                        <Box
-                                            display={"flex"}
-                                            w={138}
-                                            minW={120}
-                                            p={"6px 16px"}
-                                            justifyContent={"center"}
-                                            alignItems={"center"}
-                                            gap={10}
-                                            borderRadius={999}
-                                            border={"1px solid black"}
-                                        >
-                                            <Text
-                                                color={"black"}
-                                                fontSize={14}
-                                                fontWeight={500}
-                                                lineHeight={"normal"}
+                                                <Text
+                                                    color={"white"}
+                                                    fontSize={14}
+                                                    fontWeight={500}
+                                                    lineHeight={"normal"}
+                                                >
+                                                    Request a post
+                                                </Text>
+                                            </Box>
+                                            <Box
+                                                display={"flex"}
+                                                w={138}
+                                                minW={120}
+                                                p={"6px 16px"}
+                                                justifyContent={"center"}
+                                                alignItems={"center"}
+                                                gap={10}
+                                                borderRadius={999}
+                                                border={"1px solid black"}
                                             >
-                                                View Profile
-                                            </Text>
+                                                <Text
+                                                    color={"black"}
+                                                    fontSize={14}
+                                                    fontWeight={500}
+                                                    lineHeight={"normal"}
+                                                >
+                                                    View Profile
+                                                </Text>
+                                            </Box>
                                         </Box>
-                                    </Box>
+                                    </VStack>
                                 </WrapItem>
                             </Box>
                         </>
