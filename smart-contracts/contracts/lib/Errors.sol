@@ -11,9 +11,13 @@ library Errors {
 
     error InEligiblePost(uint256 postId);
 
-    error InValidMember(address caller);
+    error InvalidMember(address caller);
 
-    error InValidSbtHolder(address caller);
+    error InvalidSbtHolder(address caller);
 
     error AlreadyUpvotedError();
+
+    error PostAlreadyRequested();
+
+    error InvalidRequestedPost();
 }
