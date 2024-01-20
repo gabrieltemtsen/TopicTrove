@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity 0.8.19;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/interfaces/IERC4906.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-interface IBadge is IERC721, IERC4906 {
+interface IAuthorVerificationBadge is IERC721, IERC4906 {
  
-    function safeMint(address to, string memory uri) external ;
+    function safeMint(address to) external returns(uint256);
     
     function burn(uint256 tokenId) external;
 
