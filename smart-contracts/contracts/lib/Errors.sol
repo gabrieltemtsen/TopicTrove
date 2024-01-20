@@ -8,4 +8,8 @@ library Errors {
     error UnAuthorizedCaller(address caller);
 
     error AlreadyEligiblePost(uint256 postId);
+
+    error InEligiblePost(uint256 postId);
+
+    error InValidMember(address caller);
 }
