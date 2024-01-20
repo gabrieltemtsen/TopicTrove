@@ -1,9 +1,9 @@
 
 import React from 'react'
-import DashboardLayout from './layout'
+import DashboardLayout from '../layout'
 import { Box } from '@chakra-ui/react'
 
-const Overview = () => {
+const RequestedPost = () => {
   return (
    <DashboardLayout>
 <Box bg={'blackTrans-5'} minH={'300px'} flex={1}>
@@ -13,4 +13,4 @@ const Overview = () => {
   )
 }
 
-export default Overview
+export default RequestedPost
