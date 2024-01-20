@@ -111,6 +111,7 @@ const RequestedPost = () => {
 
   return (
    <DashboardLayout>
+    
 <Box bg={'blackTrans-5'} minH={'300px'} flex={1}>
 
 <Flex h={1062}  p={'20px 0px'} flexDirection={'column'} alignItems={'flex-start'} gap={'12px'} flexShrink={0} alignSelf={'stretch'}>
