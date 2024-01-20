@@ -1,7 +1,7 @@
 
 import React from 'react'
 import DashboardLayout from '../layout'
-import { Box, Button, HStack, Heading } from '@chakra-ui/react'
+import { Box, Button, Flex, HStack, Heading, Text , Image} from '@chakra-ui/react'
 import MatIcon from '@/components/MatIcon'
 import { Link } from '@chakra-ui/next-js'
 
