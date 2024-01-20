@@ -10,7 +10,10 @@ contract Platform is Ownable {
 
     // function requestPost (we charge a % for every post that has been validated, because they earn money)
     // function tipCreator (should have option to do crosschain tips) - will go straight to creator's wallet, we charge a % for every tip
-    // function tipPost (would go to our treasury) - we charge a % for every tip
+    
+    // function tipPost (would go to our treasury, then author can withdraw) - we charge a % for every tip
+    // would not implement now cause it's not a main feature, plus it can introduce vulnerabilities
+
     // function upvotePost (only verified users with SBTs can upvote)
     // function fufillPostPayment //chainlink automation call
     // function refundUsers //chainlink automation call
