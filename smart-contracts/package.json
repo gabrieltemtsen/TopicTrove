@@ -20,7 +20,6 @@
     "hardhat": "^2.12.7",
     "hardhat-gas-reporter": "^1.0.8",
     "mocha": "^10.2.0",
-    "openzeppelin-solidity": "^3.4.2",
     "solidity-coverage": "^0.8.0",
     "ts-node": ">=8.0.0",
     "typechain": "^8.1.0",
@@ -29,7 +28,7 @@
   "dependencies": {
     "@chainlink/contracts": "^0.7.1",
     "@nomicfoundation/hardhat-verify": "^2.0.2",
-    "@openzeppelin/contracts": "^5.0.1",
+    "@openzeppelin/contracts": "^4.9.3",
     "@openzeppelin/hardhat-upgrades": "^2.3.0",
     "openai": "^4.8.0"
   }
