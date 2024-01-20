@@ -59,7 +59,7 @@ const Posts = () => {
 
    {posts.map((post) => (
     <>
-      <Box key={post.id} display={'flex'} ml={2} w={'320px'} pb={'16px'} flexDirection={'column'} alignItems={'flex-start'} gap={'10px'} borderRadius={'10px'} border={'1px solid black-trans-15'}background={'#fff'}>
+      <Box key={post.id} display={'flex'} ml={2} w={'320px'} pb={'16px'} flexDirection={'column'} alignItems={'flex-start'} gap={'10px'} borderRadius={'10px'} border={'1px solid rgba(0, 0, 0, 0.05)'}background={'#fff'}>
      <Image borderRadius={'10px'}  objectFit={'cover'} src={post.image} alt='Dan Abramov' />
     <Flex w={'320px'} p={'1px 224px 4px 15px '} alignItems={'center'} borderBottom={'1px solid black-5'}>
       <Text fontSize={'14px'} fontWeight={400}>{post.createdAt}</Text>
