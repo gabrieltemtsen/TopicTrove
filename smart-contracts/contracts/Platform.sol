@@ -5,24 +5,31 @@ import "./lib/Errors.sol";
 import "./IAuthorVerificationBadge.sol";
 
 contract Platform is Ownable {
+    // only users with sbts can earn on our platform, before a user can earn he needs to be a verified author
+
     // function verifyAccount (user's will get an SBT after verifying, they need to link their twitter to be able to verify)
     // function monetizePost
-
-    // function requestPost (we charge a % for every post that has been validated, because they earn money)
-    // function tipCreator (should have option to do crosschain tips) - will go straight to creator's wallet, we charge a % for every tip
-
+    // function tipPostCreator (should have option to do crosschain tips) - will go straight to creator's wallet, we charge a % for every tip
+    // function tipCreator
     // function upvotePost (only verified users with SBTs can upvote)
+    // function requestPost (we charge a % for every post that has been validated, because they earn money)
+    // function tipRequestedPost
+
+    //TODO
+    // Implement payments with gho in all the payment functions
+    // go and do authentication
+    // Implement crosschain payments with gho (i.e tipPostCreator and tipCreator) //ccip
     // function fufillPostPayment //chainlink automation call
     // function refundUsers //chainlink automation call
-    // only user's with sbts can earn on our platform, before a user can earn he needs to be a verified author
 
-    // function tipPost (would go to our treasury, then author can withdraw) - we charge a % for every tip
-    // would not implement now cause it's not a main feature, plus it can introduce vulnerabilities
-
+    //If time permits
+    // Do crosschain upvoting //ccip
+    // allow authors to stake their received gho and earn from it
+    // write to earn, socialFi meets Defi, see if I can do anything
+    // with defi primitives like lending borrowing and LPing
+    // imagine earning yield on a requested post
     //--------------------------------------------------------------------
     // VARIABLES
-
-    //address public admin;
 
     IAuthorVerificationBadge public verificationBadge;
 
@@ -30,18 +37,31 @@ contract Platform is Ownable {
 
     mapping(address => VerifiedAuthor) public addressToVerifiedAuthors;
     mapping(uint256 => EligiblePost) public postIdToPost;
-    //mapping(uint256 => mapping(address =>  EligiblePost[])) public postIdToAuthorToPosts;
+    mapping(uint256 => RequestedPost) public requestedPostIdToRequestedPost;
+    mapping(address => mapping(uint256 => bool)) public upvoteStatus;
 
     struct VerifiedAuthor {
         uint256 sbtId;
         address authorAddress;
         uint256 tippedAmount;
         bool exists;
-        uint256[] eligiblePostsId;
+        uint256[] eligiblePostsIds;
         //uint256 platformBalance;
     }
 
     VerifiedAuthor[] verifiedAuthors;
+
+    struct RequestedPost {
+        uint256 id;
+        address requester;
+        uint256 stakeAmount;
+        uint256 amountReceived;
+        address[] patrons;
+        bool exists;
+        //bool validated;
+    }
+
+    RequestedPost[] public requestedPosts;
 
     struct EligiblePost {
         uint256 id;
@@ -94,7 +114,7 @@ contract Platform is Ownable {
         }
 
         if (!verifiedAuthor.exists) {
-            revert Errors.InValidMember(msg.sender);
+            revert Errors.InvalidMember(msg.sender);
         }
         if (msg.sender != _author) {
             revert Errors.UnAuthorizedCaller(msg.sender);
@@ -102,7 +122,7 @@ contract Platform is Ownable {
 
         postIdToPost[_postId] = EligiblePost(_postId, _author, 0, 0, true);
         eligiblePosts.push(postIdToPost[_postId]);
-        verifiedAuthor.eligiblePostsId.push(_postId);
+        verifiedAuthor.eligiblePostsIds.push(_postId);
 
         emit MonetizedPostCreated(_postId, _author);
     }
@@ -113,9 +133,99 @@ contract Platform is Ownable {
         if (msg.sender == _post.author) {
             revert("You can't tip yourself");
         }
+
+        if (!_post.exists) {
+            revert Errors.InEligiblePost(_postId);
+        }
         require(msg.value > 0, "Tip amount must be greater than 0");
+
         payable(_post.author).transfer(msg.value);
         _post.tippedAmount += msg.value;
         author.tippedAmount += msg.value;
+
+        postIdToPost[_postId] = _post;
+        addressToVerifiedAuthors[_post.author] = author;
+    }
+
+    function upvotePost(uint256 _postId) external {
+        VerifiedAuthor memory verifiedAuthor = addressToVerifiedAuthors[
+            msg.sender
+        ];
+        EligiblePost memory post = postIdToPost[_postId];
+        bool _upvoteStatus = upvoteStatus[msg.sender][_postId];
+
+        if (!post.exists) {
+            revert Errors.InEligiblePost(_postId);
+        }
+
+        if (verificationBadge.balanceOf(msg.sender) < 0) {
+            revert Errors.InvalidSbtHolder(msg.sender);
+        }
+
+        // if (!verifiedAuthor.exists) {
+        //     revert Errors.InvalidMember(msg.sender);
+        // }
+
+        if (_upvoteStatus) {
+            revert Errors.AlreadyUpvotedError();
+        }
+
+        _upvoteStatus = true;
+        post.totalUpvotes += 1;
+        addressToVerifiedAuthors[msg.sender] = verifiedAuthor;
+        upvoteStatus[msg.sender][_postId] = _upvoteStatus;
+        postIdToPost[_postId] = post;
+    }
+
+    function tipCreator(address _author) external payable {
+        VerifiedAuthor memory verifiedAuthor = addressToVerifiedAuthors[
+            _author
+        ];
+        if (msg.sender == _author) {
+            revert("You can't tip yourself");
+        }
+        if (!verifiedAuthor.exists) {
+            revert Errors.InvalidMember(_author);
+        }
+        require(msg.value > 0, "Tip amount must be greater than 0");
+        payable(_author).transfer(msg.value);
+
+        verifiedAuthor.tippedAmount += msg.value;
+        addressToVerifiedAuthors[_author] = verifiedAuthor;
+    }
+
+    function requestPost(
+        uint256 _requestedPostId,
+        uint256 stakeAmount
+    ) external payable {
+        RequestedPost storage requestedPost = requestedPostIdToRequestedPost[
+            _requestedPostId
+        ];
+        if (requestedPost.exists) {
+            revert Errors.PostAlreadyRequested();
+        }
+        //do transfer logic with gho
+
+        requestedPost.id = _requestedPostId;
+        requestedPost.requester = msg.sender;
+        requestedPost.stakeAmount = stakeAmount;
+        requestedPost.amountReceived += msg.value;
+        requestedPost.patrons.push(msg.sender);
+        requestedPost.exists = true;
+    }
+
+    function tipRequestedPost(uint256 _requestedPostId) external payable {
+        RequestedPost storage requestedPost = requestedPostIdToRequestedPost[
+            _requestedPostId
+        ];
+
+        if (!requestedPost.exists) {
+            revert Errors.InvalidRequestedPost();
+        }
+
+        //do transfer logic with gho
+
+        requestedPost.amountReceived += msg.value;
+        requestedPost.patrons.push(msg.sender);
     }
 }

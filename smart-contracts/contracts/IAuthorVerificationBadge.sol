@@ -19,6 +19,8 @@ interface IAuthorVerificationBadge is IERC721, IERC4906 {
     function _burn(uint256 tokenId) external ;
 
     function tokenURI(uint256 tokenId) external  view returns (string memory);
+
+    function balanceOf(address owner) external view returns (uint256);
     
     function supportsInterface(bytes4 interfaceId) external  view  returns (bool);
 }
