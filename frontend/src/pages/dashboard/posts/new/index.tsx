@@ -5,10 +5,27 @@ import ReactMde from 'react-mde';
 import ReactMarkdown from 'react-markdown';
 import "react-mde/lib/styles/css/react-mde-all.css";
 import MarkdownRenderer from "@/components/MarkDownRenderer";
+import axios from "axios";
 
 export default function NewPostPage(){
     const [value, setValue] = useState("**Hello world!!!**");
   const [selectedTab, setSelectedTab] =useState<"write" | "preview">("write");
+  const handleCreatePost = async () => {
+    try {
+      const apiUrl = '/api/posts/new';
+
+      const payload = {
+        title: 'Your Post Title',
+        content: value,
+      };
+      const response = await axios.post(apiUrl, payload);
+
+      console.log('API Response:', response.data);
+
+    } catch (error) {
+      console.error('Error creating post:', error);
+    }
+  };
 return <DashboardLayout>
     <Stack>
   
@@ -23,6 +40,8 @@ return <DashboardLayout>
         }
       />
     </Box>
+
+    <button onClick={handleCreatePost}>Create Post</button>
     </Stack>
 </DashboardLayout>
 }
