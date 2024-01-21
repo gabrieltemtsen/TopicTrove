@@ -26,24 +26,32 @@ const toast=useToast({
 function onImageChangeHandler(hasImage:boolean,files:File[],image:string){
   if(hasImage){
 
-    setImageFile(files[0])
+    setImageFile(files[0]);
+    const reader = new FileReader();
+      
+    reader.onload = function (e) {
+      const base64String = e.target?.result as string;
+      console.log({base64String})
+      setPost((prev)=>({...prev,coverImage:base64String}))
+    };
+    reader.readAsBinaryString(files[0])
   }
 }
 async function saveAsDraft(){
   setSubmitting(true)
   try {
     const postToSave={...post,slug:slugify(post.title)};
-    if(imageFile){
-      const reader = new FileReader();
+    // if(imageFile){
+    //   // const reader = new FileReader();
       
-      reader.onload = function (e) {
-        const base64String = e.target?.result as string;
-        postToSave.coverImage=base64String
-      };
-      reader.readAsDataURL(imageFile);
-      console.log({postToSave});
+    //   // reader.onload = function (e) {
+    //   //   const base64String = e.target?.result as string;
+    //   //   postToSave.coverImage=base64String
+    //   // };
+    //   // reader.readAsDataURL(imageFile);
+    //   console.log({postToSave});
       
-    }
+    // }
     const res=  await axios.post('/api/posts/new',postToSave)
     toast({title:res.data?.message});
 
@@ -62,16 +70,16 @@ try {
   setSubmitting(true)
 
   const postToSave={...post,status:'PUBLISHED',slug:slugify(post.title)};
-    if(imageFile){
-      const reader = new FileReader();
+    // if(imageFile){
+    //   const reader = new FileReader();
       
-      reader.onload = function (e) {
-        const base64String = e.target?.result as string;
-        postToSave.coverImage=base64String
-      };
+    //   reader.onload = function (e) {
+    //     const base64String = e.target?.result as string;
+    //     postToSave.coverImage=base64String
+    //   };
 
-      reader.readAsDataURL(imageFile);
-    }
+    //   reader.readAsDataURL(imageFile);
+    // }
     const res=  await axios.post('/api/posts/new',postToSave)
     toast({title:res.data?.message});
 

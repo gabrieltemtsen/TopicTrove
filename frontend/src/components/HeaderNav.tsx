@@ -23,9 +23,10 @@ export default function HeaderNav<HeaderProps>({ bg = "appGreen" }) {
       <Nav />
       <Flex>
         {/* <Button rounded={"full"} size={"lg"}>
-        //  <ConnectKitButton />
+         <ConnectKitButton />
         </Button> */}
         {/* <ConnectButton/> */}
+        <ConnectKitButton />
       </Flex>
     </Flex>
   );

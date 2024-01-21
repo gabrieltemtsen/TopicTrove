@@ -2,9 +2,6 @@ import { Link } from "@chakra-ui/next-js";
 import { Box, Button, Flex, HStack, Image, List, ListItem, Stack, Text } from "@chakra-ui/react";
 import MatIcon from "./MatIcon";
 import { usePathname } from "next/navigation";
-import Logo from "./Logo";
-import { FC } from "react";
-
 
 
 interface SidebarProps{
@@ -12,11 +9,11 @@ interface SidebarProps{
 }
 export default function DashboardSideBar({entryPath='/dashboard/'}:SidebarProps ){
   const links=[{
-    title:'Overview',url:'overview',icon:'dashboard'
-},{title:'Posts',url:'posts',icon:'box'},{
-    title:'Requested Post',url:'requested-post',icon:'post'
+    title:'Overview',url:'overview',icon:'dashboard',child:[]
+},{title:'Posts',url:'posts',icon:'box',child:['new']},{
+    title:'Requested Post',url:'requested-post',icon:'post',child:[]
 },{
-    title:'Settings',url:'settings',icon:'settings'
+    title:'Settings',url:'settings',icon:'settings',child:[]
 },];
 const pathname = usePathname();
 // console.log({pathname,entry:entryPath});
@@ -25,7 +22,7 @@ const parts = pathname.split('/');
 const lastPart = parts[parts.length - 1];
 const _links = links.map((link, i) => {
   const isActive =
-    lastPart === link?.url ||
+    lastPart === link?.url || link.child.includes(lastPart)||
     (link?.url === 'overview' && lastPart === 'dashboard');
   
   const buildLink = (entry: string, url: string) => url.toLowerCase() === 'overview' ? entry + '' : entry + url;

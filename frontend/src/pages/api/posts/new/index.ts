@@ -3,8 +3,10 @@ import { posts } from "@/db/schema";
 import { errorHandlerCallback, successHandlerCallback } from "@/lib/api-utils";
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from 'axios'
+import dotenv from 'dotenv'
+dotenv.config()
+const {COPYLEAKS_API_KEY} = process.env;
 
-const COPYLEAKS_API_KEY = '0948BCEF449DEAA472998CF66CF9BDB21499D403F291825A4A1F3FF45F44720E';
 const POST_UNIQUE_ID = 'studentid123-submissionid456'
 export type HTTP_METHOD='GET'|'PUT'|'POST'|'DELETE'
 export default async function handler(req:NextApiRequest,res:NextApiResponse){
@@ -38,7 +40,7 @@ export async function POST(req:NextApiRequest,res:NextApiResponse){
   try {
 
    
-    const { title, content } = req.body;
+    const {content,status,...rest } = req.body;
 
     
     const copyleaksData = {
@@ -52,7 +54,11 @@ export async function POST(req:NextApiRequest,res:NextApiResponse){
       },
     };
 
-    
+    if(status==='DRAFT'){
+      await db.insert(posts).values({...rest,content})
+      return await successHandlerCallback(req,res,{message:'Draft saved successfully'})
+   
+    }
     const copyleaksResponse = await axios.post(`https://api.copyleaks.com/v2/writer-detector/${POST_UNIQUE_ID}/check`, copyleaksData, copyleaksOptions);
 
     console.log(copyleaksResponse)
@@ -60,21 +66,11 @@ export async function POST(req:NextApiRequest,res:NextApiResponse){
 
     if (isAIGenerated) {
       console.log('AI GENERATED')
-      return await successHandlerCallback(req, res, { message: 'Content identified as AI Generated. Not saved to the database.' });
+      return await successHandlerCallback(req, res, { message: 'Content identified as AI Generated. Not saved' });
     }
+    const insert=await db.insert(posts).values({...rest,status,content})
+    return await successHandlerCallback(req,res,{message:'Post created successfully'})
 
-    return await successHandlerCallback(req, res, { message: 'Post created successfully' });
-
-
-
-
-
-    // const bodyData=req.body(); 
-    // const insert=await db.insert(posts).values({
-    //   userId:1,title:'Post title',content:'POST content goes here',slug:'post-title-1'
-    // })
-    //     const data=await db.select().from(posts)
-    // return await successHandlerCallback(req,res,{message:'Post created successfully',data:{data,insert}})
 } catch (error: any) {
   console.log(error)
       return await errorHandlerCallback(req,res,{message:'An error occured'})

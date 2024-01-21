@@ -10,7 +10,7 @@ import {
   timestamp,
   text,
   boolean,
-  index,
+  index,binary,
 
 } from "drizzle-orm/mysql-core";
 
@@ -60,7 +60,7 @@ export const posts = mysqlTable(
     createdAt: timestamp("created_at").defaultNow(),
     updatedAt: timestamp("updated_at"),
     status: mysqlEnum('status', ['PUBLISHED', 'DRAFT']),
-    coverImage: text('cover_image')
+    coverImage: binary('cover_image') 
   }, (table) => ({
     titleIdx: index('title_idx').on(table.title),
   })
