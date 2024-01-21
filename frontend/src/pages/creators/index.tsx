@@ -222,11 +222,11 @@ const Creators = () => {
                         Writes about:{" "}
                       </Text>
                       <HStack wrap={'wrap'}
-                        display={"flex"}
+              
                         
                         p={"8px 0px"}
                       
-                        gap={"0px 10px"}
+                        gap={"10px"}
                       
                       >
                         {creator.genre.map((item,i) => (
@@ -409,11 +409,11 @@ const Creators = () => {
                       Writes about:{" "}
                     </Text>
                     <HStack wrap={'wrap'}
-                      display={"flex"}
+                      
                       
                       p={"8px 0px"}
                     
-                      gap={"0px 10px"}
+                      gap={"10px"}
                     
                     >
                       {creator.genre.map((item,i) => (
