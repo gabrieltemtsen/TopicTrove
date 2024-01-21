@@ -7,7 +7,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 // const {COPYLEAKS_API_KEY} = process.env;
 
-const COPYLEAKS_API_KEY = 'FB5193C14CCA4CEF07A4279F1675072FF557E487914FB4BC959230C88E0081C1'
+
 
 const POST_UNIQUE_ID = 'studentid123-submissionid456'
 export type HTTP_METHOD='GET'|'PUT'|'POST'|'DELETE'
