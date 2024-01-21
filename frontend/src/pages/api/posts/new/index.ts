@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import axios from 'axios'
 import dotenv from 'dotenv'
 dotenv.config()
-// const {COPYLEAKS_API_KEY} = process.env;
+const {COPYLEAKS_API_KEY} = process.env;
 
 
 
