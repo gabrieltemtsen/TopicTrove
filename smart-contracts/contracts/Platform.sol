@@ -27,7 +27,7 @@ contract Platform is Ownable {
     // allow authors to stake their received gho and earn from it
     // write to earn, socialFi meets Defi, see if I can do anything
     // with defi primitives like lending borrowing and LPing
-
+    // imagine earning yield on a requested post
     //--------------------------------------------------------------------
     // VARIABLES
 
