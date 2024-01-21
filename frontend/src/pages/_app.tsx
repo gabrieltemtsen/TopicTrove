@@ -1,5 +1,6 @@
 import MainChakraProvider from "@/providers/chakra";
 import "@/styles/globals.css";
+import 'material-symbols/outlined.css'
 import type { AppProps } from "next/app";
 import { WagmiConfig, createConfig } from "wagmi";
 import {
