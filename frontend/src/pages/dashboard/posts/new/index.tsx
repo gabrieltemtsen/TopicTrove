@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import "react-mde/lib/styles/css/react-mde-all.css";
 import MarkdownRenderer from "@/components/MarkDownRenderer";
 import axios from "axios";
+import React from "react";
 
 export default function NewPostPage(){
     const [value, setValue] = useState("**Hello world!!!**");

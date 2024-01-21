@@ -18,6 +18,7 @@ import {
   Input,
   Stack,
   VStack,
+  HStack,
 } from "@chakra-ui/react";
 
 import React from "react";
@@ -259,7 +260,7 @@ const Creators = () => {
                       </Box>
                     </Box>
                   </Box>
-                  <VStack spacing={2}>
+                  <HStack spacing={2}>
                   <Box
                     display={"flex"}
                     p={2}
@@ -309,7 +310,7 @@ const Creators = () => {
                     </Box>
                   </Box>
                     
-                  </VStack>
+                  </HStack>
                  
                 </WrapItem>
               </Box>

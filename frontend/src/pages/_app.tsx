@@ -20,6 +20,11 @@ import { publicProvider } from "wagmi/providers/public";
 import { Component, useState, useEffect } from "react";
 import { PlaceholderComponent } from "./placeHolder";
 
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
+
+
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, base, zora],
   [publicProvider()],
@@ -46,6 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [selectedLoginMethod, setSelectedLoginMethod] = useState(null);
   return (
     <>
+    <QueryClientProvider client={queryClient}></QueryClientProvider>
       {selectedLoginMethod === "social" && (
         <WagmiConfig config={wagmiConfig}>
           <RainbowKitProvider

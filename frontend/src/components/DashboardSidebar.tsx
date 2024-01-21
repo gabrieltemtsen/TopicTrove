@@ -19,7 +19,7 @@ export default function DashboardSideBar({entryPath='/dashboard/'}:SidebarProps 
     title:'Settings',url:'settings',icon:'settings'
 },];
 const pathname = usePathname();
-console.log({pathname,entry:entryPath});
+// console.log({pathname,entry:entryPath});
 
 const parts = pathname.split('/');
 const lastPart = parts[parts.length - 1];
