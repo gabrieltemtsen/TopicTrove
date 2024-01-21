@@ -9,7 +9,7 @@ import { Box } from "@chakra-ui/react";
 export default function Home() {
   return (
     <>
-    <Box  maxW={'1400px'}
+    <Box marginX={"auto"} maxW={'1400px'}
     as="main"
     >
       <HeaderNav/>
